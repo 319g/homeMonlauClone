@@ -7,10 +7,12 @@ const aplications = document.querySelector(".aplications");
 
 const setStyle = ()=>{
     if(window.localStorage.getItem('bgMode') == 'light'){
+        modToggle.checked = false;
         body.style.backgroundColor = '#ffffff';
         aplications.style.color = '#000000';
     }else if(window.localStorage.getItem('bgMode') == 'dark'){
-        body.style.backgroundColor= '#1e1e1e';
+        modToggle.checked = true;
+        body.style.backgroundColor = '#1e1e1e';
         aplications.style.color = '#ffffff';
     }
 }

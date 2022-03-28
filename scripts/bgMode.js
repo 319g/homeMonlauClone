@@ -4,7 +4,6 @@ const modToggle = document.getElementById("modToggle");
 const body = document.querySelector("body");
 const aplications = document.querySelector(".aplications");
 
-
 const setStyle = ()=>{
     if(window.localStorage.getItem('bgMode') == 'light'){
         modToggle.checked = false;
@@ -17,12 +16,6 @@ const setStyle = ()=>{
     }
 }
 
-if(window.localStorage.getItem('bgMode') == null){
-    window.localStorage.setItem('bgMode', 'light');
-}
-
-setStyle();
-
 modToggle.addEventListener("click", ()=>{
     if(modToggle.checked == true){
         window.localStorage.setItem('bgMode', 'dark');
@@ -32,3 +25,9 @@ modToggle.addEventListener("click", ()=>{
         setStyle();
     }
 });
+
+if(window.localStorage.getItem('bgMode') == null){ //Establece un valor para bgMode si no se ha abierto anteriormente la pagina
+    window.localStorage.setItem('bgMode', 'light');
+}
+
+setStyle();

@@ -60,11 +60,14 @@
     margin-left: 10%;
     margin-right: 10%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, 150px);
 }
 
 .aplication-item{
+    width: 120px;
     margin-bottom: 20px;
+    align-self: center;
+    justify-self: center;
     text-align: center;
     transition: transform 200ms ease-in-out;
 }
@@ -91,9 +94,14 @@
     cursor: pointer;
 }
 
-.manageAplications-item:hover{
+#addAplications:hover{
     transition: 150ms ease-in-out;
-    padding-top: 25px;
+    outline: 5px solid #32f12b;
+}
+
+#deleteAplications:hover{
+    transition: 150ms ease-in-out;
+    outline: 5px solid #ff0000;
 }
 
 @media screen and (max-width: 825px){

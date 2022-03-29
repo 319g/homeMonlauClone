@@ -63,9 +63,38 @@ const getShortcut = ()=>{
     });
 }
 
+//------------------------------Insercion HTML---------------------------------
+
+const shortcutHTML = (id, shortcut)=>{
+    const div = document.createElement("DIV");
+    const a = document.createElement("A");
+    const img = document.createElement("IMG");
+    const p = document.createElement("P");
+    const i = document.createElement("I");
+
+    a.setAttribute('target', "_blank");
+    a.setAttribute('href', shortcut["surl"]);
+    img.setAttribute('src', shortcut["simg"]);
+    p.textContent = shortcut["sname"];
+    i.setAttribute('id', shortcut["sname"]);
+    i.setAttribute('onclick', "deleteShortcut(this.id)");
+
+    div.classList.add("aplication-item");
+    i.classList.add("fa-solid");
+    i.classList.add("fa-xmark");
+    
+    a.appendChild(img);
+    div.append(i);
+    div.appendChild(a);
+    div.appendChild(p);
+
+    return div;
+}
+
 //------------------------------Eliminar campos de la DB---------------------------------
 
 const deleteShortcut = (name)=>{
+    alert(name);
     try{
         const db = request.result;
         const IDBTransaction = db.transaction("shortcut", "readwrite");
@@ -77,27 +106,7 @@ const deleteShortcut = (name)=>{
     }   
 }
 
-//------------------------------Insercion HTML---------------------------------
 
-const shortcutHTML = (id, shortcut)=>{
-    const div = document.createElement("DIV");
-    const a = document.createElement("A");
-    const img = document.createElement("IMG");
-    const p = document.createElement("P");
-
-    a.setAttribute('target', "_blank");
-    a.setAttribute('href', shortcut["surl"]);
-    img.setAttribute('src', shortcut["simg"]);
-    p.textContent = shortcut["sname"];
-
-    div.classList.add("aplication-item");
-    
-    a.appendChild(img);
-    div.appendChild(a);
-    div.appendChild(p);
-
-    return div;
-}
 
 //------------------------------Entrada del usuario---------------------------------
 
@@ -119,14 +128,4 @@ addButton.addEventListener("click", ()=>{
     }else{
         alert("Datos no válidos");
     }
-});
-
-//------------------------------Eliminacion del usuario---------------------------------
-
-const deleteAplications = document.getElementById("deleteAplications");
-
-deleteAplications.addEventListener("click", ()=>{
-    let name = prompt("Pon el nombre del atajo a eliminar");
-
-    deleteShortcut(name);
 });

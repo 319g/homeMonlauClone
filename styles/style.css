@@ -60,12 +60,11 @@
     margin-left: 10%;
     margin-right: 10%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 150px);
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
 }
 
 .aplication-item{
     width: 120px;
-    margin-bottom: 20px;
     align-self: center;
     justify-self: center;
     text-align: center;
@@ -77,7 +76,23 @@
     transform: scale(1.2);
 }
 
+.aplication-item img{
+    max-width: 113px;
+    max-height: 114px;
+    border-radius: 5px;
+}
+
+.aplication-item .fa-xmark{
+    float: left;
+    background-color: #ccc;
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
 .manageApications{
+    margin-top: 15px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;

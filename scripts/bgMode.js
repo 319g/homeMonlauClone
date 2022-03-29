@@ -2,17 +2,17 @@
 
 const modToggle = document.getElementById("modToggle");
 const body = document.querySelector("body");
-const aplications = document.querySelector(".aplications");
+const applications = document.querySelector(".applications");
 
 const setStyle = ()=>{
     if(window.localStorage.getItem('bgMode') == 'light'){
         modToggle.checked = false;
         body.style.backgroundColor = '#ffffff';
-        aplications.style.color = '#000000';
+        applications.style.color = '#000000';
     }else if(window.localStorage.getItem('bgMode') == 'dark'){
         modToggle.checked = true;
         body.style.backgroundColor = '#1e1e1e';
-        aplications.style.color = '#ffffff';
+        applications.style.color = '#ffffff';
     }
 }
 

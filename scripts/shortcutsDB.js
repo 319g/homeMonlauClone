@@ -53,12 +53,12 @@ const getShortcut = ()=>{
 
     cursor.addEventListener("success", ()=>{
         if(cursor.result){
-            let aplication = shortcutHTML(cursor.result.key, cursor.result.value);
+            let application = shortcutHTML(cursor.result.key, cursor.result.value);
             console.log(cursor.result.value);
-            fragment.appendChild(aplication);
+            fragment.appendChild(application);
             cursor.result.continue();
         }else{
-            document.querySelector(".aplications").appendChild(fragment);
+            document.querySelector(".applications").appendChild(fragment);
         }
     });
 }
@@ -79,7 +79,7 @@ const shortcutHTML = (id, shortcut)=>{
     i.setAttribute('id', shortcut["sname"]);
     i.setAttribute('onclick', "deleteShortcut(this.id)");
 
-    div.classList.add("aplication-item");
+    div.classList.add("application-item");
     i.classList.add("fa-solid");
     i.classList.add("fa-xmark");
     
@@ -94,7 +94,6 @@ const shortcutHTML = (id, shortcut)=>{
 //------------------------------Eliminar campos de la DB---------------------------------
 
 const deleteShortcut = (name)=>{
-    alert(name);
     try{
         const db = request.result;
         const IDBTransaction = db.transaction("shortcut", "readwrite");
@@ -106,11 +105,9 @@ const deleteShortcut = (name)=>{
     }   
 }
 
-
-
 //------------------------------Entrada del usuario---------------------------------
 
-const addButton = document.getElementById("addAplications");
+const addButton = document.getElementById("addapplications");
 
 addButton.addEventListener("click", ()=>{
     let url = prompt("Añade la URL. Ejemplo: https://www.google.com");

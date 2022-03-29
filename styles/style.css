@@ -69,6 +69,7 @@
     align-self: center;
     justify-self: center;
     text-align: center;
+    border-radius: 5px;
     transition: transform 200ms ease-in-out;
 }
 

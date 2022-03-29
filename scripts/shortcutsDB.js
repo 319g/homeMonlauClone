@@ -38,6 +38,7 @@ const saveShortcut = (url, name, img)=>{
 
     IDBTransaction.addEventListener("complete", ()=>{
         console.log("Shorcut added");
+        location.reload();
     });
 }
 
@@ -69,6 +70,8 @@ const deleteShortcut = (name)=>{
         const db = request.result;
         const IDBTransaction = db.transaction("shortcut", "readwrite");
         IDBTransaction.objectStore("shortcut").delete(name);
+
+        location.reload();
     }catch(e){
         console.log("Eliminacion cancelada");
     }   
@@ -101,14 +104,18 @@ const shortcutHTML = (id, shortcut)=>{
 const addButton = document.getElementById("addAplications");
 
 addButton.addEventListener("click", ()=>{
-    let url = prompt("Añade la URL");
+    let url = prompt("Añade la URL. Ejemplo: https://www.google.com");
     let name = prompt("Pon el nombre");
-    let img = prompt("Añade una imagen");
+    let img = prompt("Añade una direccion de imagen. Ejemplo: https://moodle.monlau.com/pluginfile.php/1/theme_edumy/headerlogo2/1648480794/M20-ESOBAT-FP.png");
 
-    if(url != "" || name != "" || img != ""){
+    name = name.toLocaleLowerCase();
+
+    if(img == ""){
+        img = "img/notFound.png";
+    }
+
+    if(url != "" && name != "" && img != ""){
         saveShortcut(url, name, img);
-        
-        updateAplications();
     }else{
         alert("Datos no válidos");
     }
@@ -122,13 +129,4 @@ deleteAplications.addEventListener("click", ()=>{
     let name = prompt("Pon el nombre del atajo a eliminar");
 
     deleteShortcut(name);
-
-    updateAplications();
 });
-
-//------------------------------Actualizar DIV aplications---------------------------------
-
-const updateAplications = ()=>{
-    document.querySelector(".aplications").innerHTML.reload;
-}
-

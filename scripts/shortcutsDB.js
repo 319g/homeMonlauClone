@@ -1,36 +1,38 @@
 "use strict";
 
-//------------------------------Funciones de DB---------------------------------
+//------------------------------Abir/Crear DB---------------------------------
 
 const request = indexedDB.open("DBShortcuts", 1);
 
 request.addEventListener("upgradeneeded", ()=>{
     const db = request.result;
-    db.createObjectStore("shortcut",{
-        autoIncrement: true
-    });
+    db.createObjectStore("shortcut",{keyPath: "sname"}); //La pk va a ser el nombre
     console.log("DBshortcuts created successfully");
 });
 
 request.addEventListener("success", ()=>{
     console.log("DBshortcuts open successfully");
+    try{
+        getShortcut();
+    }catch(e){
+        console.log("No hay ningun atajo personalizado guardado");
+    }
 });
 
 request.addEventListener("error", ()=>{
     console.log("Unexpected error, cannot open the DBshortcuts");
 });
 
-const saveShortcut = (url, name, img)=>{ //anadir shortcut
+//------------------------------Añadir campo---------------------------------
+
+const saveShortcut = (url, name, img)=>{
     const db = request.result;
     const IDBTransaction = db.transaction("shortcut", "readwrite");
     const objectStore = IDBTransaction.objectStore("shortcut");
 
     objectStore.add({
-        /*"url": "https://www.google.com",
-        "name": "google",
-        "img": "https://1000marcas.net/wp-content/uploads/2020/02/logo-Google.png"*/
-        "surl": url,
         "sname": name,
+        "surl": url,
         "simg": img
     });
 
@@ -38,6 +40,8 @@ const saveShortcut = (url, name, img)=>{ //anadir shortcut
         console.log("Shorcut added");
     });
 }
+
+//------------------------------Sacar campos de la DB---------------------------------
 
 const getShortcut = ()=>{
     const db = request.result;
@@ -56,6 +60,18 @@ const getShortcut = ()=>{
             document.querySelector(".aplications").appendChild(fragment);
         }
     });
+}
+
+//------------------------------Eliminar campos de la DB---------------------------------
+
+const deleteShortcut = (name)=>{
+    try{
+        const db = request.result;
+        const IDBTransaction = db.transaction("shortcut", "readwrite");
+        IDBTransaction.objectStore("shortcut").delete(name);
+    }catch(e){
+        console.log("Eliminacion cancelada");
+    }   
 }
 
 //------------------------------Insercion HTML---------------------------------
@@ -80,7 +96,7 @@ const shortcutHTML = (id, shortcut)=>{
     return div;
 }
 
-//------------------------------Entradas del usuario---------------------------------
+//------------------------------Entrada del usuario---------------------------------
 
 const addButton = document.getElementById("addAplications");
 
@@ -91,7 +107,28 @@ addButton.addEventListener("click", ()=>{
 
     if(url != "" || name != "" || img != ""){
         saveShortcut(url, name, img);
+        
+        updateAplications();
     }else{
         alert("Datos no válidos");
     }
 });
+
+//------------------------------Eliminacion del usuario---------------------------------
+
+const deleteAplications = document.getElementById("deleteAplications");
+
+deleteAplications.addEventListener("click", ()=>{
+    let name = prompt("Pon el nombre del atajo a eliminar");
+
+    deleteShortcut(name);
+
+    updateAplications();
+});
+
+//------------------------------Actualizar DIV aplications---------------------------------
+
+const updateAplications = ()=>{
+    document.querySelector(".aplications").innerHTML.reload;
+}
+

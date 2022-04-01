@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/checkBox.css">
+    <link rel="stylesheet" href="styles/popupForm.css">
     <link rel="stylesheet" href="styles/style.css">
     <title>Home Monlau</title>
     <link rel="shortcut icon" href="img/rombo.png" type="image/x-icon">
@@ -132,6 +133,25 @@
         <p>Añadir Atajo</p>
         <i class="fa-solid fa-circle-plus"></i>
     </div>
+
+    <!--Formulario popup-->
+    <div class="formContainer" id="popupForm">
+        <i class="fa-solid fa-xmark fa-3x"></i>
+        <form class="popupForm" action="javascript:void(0);">
+            <h4>Introduce el enlace</h4>
+            <p><b>Ejemplo:</b> www.google.com</p>
+            <input type="text" id="surl">
+            <h4>Introduce el nombre</h4>
+            <input type="text" id="sname">
+            <h4>Introduce la dirección de una imagen (opcional)</h4>
+            <p><b>Ejemplo:</b> https://moodle.monlau.com/pluginfile.php/1/theme_edumy/headerlogo2/1648480794/M20-ESOBAT-FP.png</p>
+            <input type="text" id="simg">
+            <br>
+    
+            <input type="submit" id="saveButton" value="Confirmar">
+        </form>
+    </div>
+
     <script src="https://kit.fontawesome.com/87e66f8561.js" crossorigin="anonymous"></script>
     <script src="scripts/bgMode.js"></script>
     <script src="scripts/shortcutsDB.js"></script>

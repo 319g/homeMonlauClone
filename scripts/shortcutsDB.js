@@ -105,24 +105,34 @@ const deleteShortcut = (name)=>{
     }   
 }
 
-//------------------------------Entrada del usuario---------------------------------
+//------------------------------Mostrar el formulario para guardar atajo---------------------------------
 
 const addButton = document.getElementById("addapplications");
 
 addButton.addEventListener("click", ()=>{
-    let url = prompt("Añade la URL. Ejemplo: https://www.google.com");
-    let name = prompt("Pon el nombre");
-    let img = prompt("Añade una direccion de imagen. Ejemplo: https://moodle.monlau.com/pluginfile.php/1/theme_edumy/headerlogo2/1648480794/M20-ESOBAT-FP.png");
+    const popupForm = document.getElementById("popupForm");
+
+    popupForm.style.display = "flex";
+});
+
+//------------------------------Entrada del usuario---------------------------------
+
+const saveButton = document.getElementById("saveButton");
+
+saveButton.addEventListener("click", ()=>{
+    let url = document.getElementById("surl").value;
+    let name = document.getElementById("sname").value;
+    let img = document.getElementById("simg").value;
 
     if(img == ""){
         img = "img/notFound.png";
     }
-    
-    if(url.charAt(0) != "h" && url.charAt(1) != "t"){
-        url = "http://" + url;
-    }
-
+    console.log(url);
     if(url != "" && name != "" && img != ""){
+        if(url.charAt(0) != "h" && url.charAt(1) != "t"){
+            url = "http://" + url;
+        }
+
         saveShortcut(url, name, img);
     }else{
         alert("Datos no válidos");

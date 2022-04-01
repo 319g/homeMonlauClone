@@ -105,7 +105,7 @@ const deleteShortcut = (name)=>{
     }   
 }
 
-//------------------------------Mostrar el formulario para guardar atajo---------------------------------
+//------------------------------Mostrar u ocultar el formulario para guardar atajo---------------------------------
 
 const addButton = document.getElementById("addapplications");
 
@@ -113,6 +113,14 @@ addButton.addEventListener("click", ()=>{
     const popupForm = document.getElementById("popupForm");
 
     popupForm.style.display = "flex";
+});
+
+const closeForm = document.getElementById("closeForm");
+
+closeForm.addEventListener("click", ()=>{
+    const popupForm = document.getElementById("popupForm");
+
+    popupForm.style.display = "none";
 });
 
 //------------------------------Entrada del usuario---------------------------------

@@ -1,17 +1,18 @@
 .formContainer{
     display: none;
-    position: absolute;
+    position: fixed;
     text-align: center;
-    top: 30%;
     width: 100%;
+    bottom: 10%;
 }
 
 .popupForm{
     width: 600px;
+    height: fit-content;
     margin: 60px auto;
     padding: 20px;
     border-radius: 10px;
-   background-color: #fdb033;
+    background-color: #fff;
     border: 5px solid #000;
 }
 
@@ -21,7 +22,7 @@
     margin-top: -85px;
     width: 50px;
     height: 50px;
-    background-color: #fdb033;
+    background-color: #fff;
     outline: 5px solid #000;
     padding: 2px;
     border-radius: 100%;
@@ -40,7 +41,7 @@
 .popupForm input[type=text]{
     padding: 5px;
     border-radius: 5px;
-    border: 2px solid #06b8ff;
+    border: 3px solid #0640ff;
     width: 90%;
     font-size: 18px;
     margin-bottom: 15px;

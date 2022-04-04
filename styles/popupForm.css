@@ -3,7 +3,7 @@
     position: fixed;
     text-align: center;
     width: 100%;
-    bottom: 10%;
+    bottom: 2%;
 }
 
 .popupForm{
@@ -55,11 +55,11 @@
     border: none;
     border-radius: 5px;
     background-color: #ccc;
-    box-shadow: 0px 6px 0px 0px #000000;
+    box-shadow: 0px 6px 0px 0px #868686;
 }
 
 .popupForm input[type=submit]:hover{
     transition: 150ms ease-in-out;
-    box-shadow: 0px 0px 0px 0px #000000;
+    box-shadow: 0px 0px 0px 0px #868686;
     transform: translateY(6px);
 }

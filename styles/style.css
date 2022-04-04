@@ -103,12 +103,12 @@
     font-size: 18px;
     font-weight: 700;
     border-radius: 5px;
-    box-shadow: 0px 10px 0px 0px #000000;
+    box-shadow: 0px 10px 0px 0px #868686;
 }
 
 #addapplications:hover{
     transition: 150ms ease-in-out;
-    box-shadow: 0px 0px 0px 0px #000000;
+    box-shadow: 0px 0px 0px 0px #868686;
     transform: translateY(10px);
 }
 
